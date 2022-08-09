@@ -1,5 +1,6 @@
 object Versions {
-    const val compose = "1.0.1"
+    const val kotlin = "1.7.0"
+    const val compose = "1.2.0"
     const val androidXCore = "1.7.0"
     const val androidXActivity = "1.3.1"
     const val junit = "4.13.2"
