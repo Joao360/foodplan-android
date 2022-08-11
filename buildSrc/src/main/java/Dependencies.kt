@@ -1,17 +1,4 @@
-object Versions {
-    const val kotlin = "1.7.0"
-    const val compose = "1.2.0"
-    const val androidXCore = "1.7.0"
-    const val androidXActivity = "1.3.1"
-    const val junit = "4.13.2"
-    const val androidXLifecycle = "2.3.1"
-    const val androidXTest = "1.1.3"
-    const val espresso = "3.4.0"
-    const val androidXAppCompat = "1.4.1"
-    const val googleMaterial = "1.5.0"
-}
-
-object Libs {
+object Dependencies {
     // Compose
     const val composeUi = "androidx.compose.ui:ui:${Versions.compose}"
     const val composeMaterial = "androidx.compose.material:material:${Versions.compose}"
@@ -24,6 +11,10 @@ object Libs {
     const val androidXActivityCompose = "androidx.activity:activity-compose:${Versions.androidXActivity}"
     const val androidXLifecycleRuntimeKtx = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.androidXLifecycle}"
     const val androidXAppCompat = "androidx.appcompat:appcompat:${Versions.androidXAppCompat}"
+
+    // Build
+    const val androidGradlePlugin = "com.android.tools.build:gradle:${Versions.androidGradlePlugin}"
+    const val kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
 
     // Espresso
     const val espressoCore = "androidx.test.espresso:espresso-core:${Versions.espresso}"

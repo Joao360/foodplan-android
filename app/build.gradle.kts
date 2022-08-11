@@ -10,8 +10,8 @@ android {
         applicationId = "com.joaograca.foodplan"
         minSdk = ProjectConfig.minSdk
         targetSdk = ProjectConfig.targetSdk
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = ProjectConfig.versionCode
+        versionName = ProjectConfig.versionName
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -22,7 +22,10 @@ android {
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
     compileOptions {
@@ -45,18 +48,18 @@ android {
 
 dependencies {
 
-    implementation(Libs.androidxCore)
-    implementation(Libs.composeUi)
-    implementation(Libs.composeMaterial)
-    implementation(Libs.composeUiToolingPreview)
-    implementation(Libs.androidXLifecycleRuntimeKtx)
-    implementation(Libs.androidXActivityCompose)
+    implementation(Dependencies.androidxCore)
+    implementation(Dependencies.composeUi)
+    implementation(Dependencies.composeMaterial)
+    implementation(Dependencies.composeUiToolingPreview)
+    implementation(Dependencies.androidXLifecycleRuntimeKtx)
+    implementation(Dependencies.androidXActivityCompose)
 
-    testImplementation(Libs.jUnit)
+    testImplementation(Dependencies.jUnit)
 
-    androidTestImplementation(Libs.testExt)
-    androidTestImplementation(Libs.espressoCore)
-    androidTestImplementation(Libs.composeUiTestJunit)
+    androidTestImplementation(Dependencies.testExt)
+    androidTestImplementation(Dependencies.espressoCore)
+    androidTestImplementation(Dependencies.composeUiTestJunit)
 
-    debugImplementation(Libs.composeUiTooling)
+    debugImplementation(Dependencies.composeUiTooling)
 }

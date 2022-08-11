@@ -4,8 +4,8 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath(Build.androidBuildTools)
-        classpath(Build.kotlinGradlePlugin)
+        classpath(Dependencies.androidGradlePlugin)
+        classpath(Dependencies.kotlinGradlePlugin)
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files

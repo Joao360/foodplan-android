@@ -31,12 +31,12 @@ android {
 
 dependencies {
 
-    implementation(Libs.androidxCore)
-    implementation(Libs.androidXAppCompat)
-    implementation(Libs.androidMaterial)
+    implementation(Dependencies.androidxCore)
+    implementation(Dependencies.androidXAppCompat)
+    implementation(Dependencies.androidMaterial)
 
-    testImplementation(Libs.jUnit)
+    testImplementation(Dependencies.jUnit)
 
-    androidTestImplementation(Libs.testExt)
-    androidTestImplementation(Libs.espressoCore)
+    androidTestImplementation(Dependencies.testExt)
+    androidTestImplementation(Dependencies.espressoCore)
 }
