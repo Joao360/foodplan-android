@@ -1,42 +1,13 @@
-plugins {
-    id("com.android.library")
-    kotlin("android")
-}
-
-android {
-    compileSdk = ProjectConfig.compileSdk
-
-    defaultConfig {
-        minSdk = ProjectConfig.minSdk
-        targetSdk = ProjectConfig.targetSdk
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles("consumer-rules.pro")
-    }
-
-    buildTypes {
-        getByName("release") {
-            isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-        }
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
+apply {
+    from("$rootDir/base-module.gradle")
 }
 
 dependencies {
 
-    implementation(Dependencies.androidxCore)
-    implementation(Dependencies.androidXAppCompat)
-    implementation(Dependencies.androidMaterial)
+    "implementation"(Dependencies.androidxCore)
+    "implementation"(Dependencies.androidXAppCompat)
+    "implementation"(Dependencies.androidMaterial)
 
-    testImplementation(Dependencies.jUnit)
-
-    androidTestImplementation(Dependencies.testExt)
-    androidTestImplementation(Dependencies.espressoCore)
+    "androidTestImplementation"(Dependencies.testExt)
+    "androidTestImplementation"(Dependencies.espressoCore)
 }
