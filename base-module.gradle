@@ -1,5 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
 
 android {
     compileSdk ProjectConfig.compileSdk
@@ -28,5 +30,9 @@ android {
 }
 
 dependencies {
+    implementation Dependencies.hilt
+
+    kapt Dependencies.hiltCompiler
+
     testImplementation Dependencies.jUnit
 }

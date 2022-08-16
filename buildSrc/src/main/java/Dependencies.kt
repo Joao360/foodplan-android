@@ -8,17 +8,19 @@ object Dependencies {
 
     // Android
     const val androidxCore = "androidx.core:core-ktx:${Versions.androidXCore}"
-    const val androidXActivityCompose = "androidx.activity:activity-compose:${Versions.androidXActivity}"
-    const val androidXLifecycleRuntimeKtx = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.androidXLifecycle}"
+    const val androidXActivityCompose =
+        "androidx.activity:activity-compose:${Versions.androidXActivity}"
+    const val androidXLifecycleRuntimeKtx =
+        "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.androidXLifecycle}"
     const val androidXAppCompat = "androidx.appcompat:appcompat:${Versions.androidXAppCompat}"
-
-    // Build
-    const val androidGradlePlugin = "com.android.tools.build:gradle:${Versions.androidGradlePlugin}"
-    const val kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
 
     // Espresso
     const val espressoCore = "androidx.test.espresso:espresso-core:${Versions.espresso}"
     const val testExt = "androidx.test.ext:junit:${Versions.androidXTest}"
+
+    // Hilt
+    const val hilt = "com.google.dagger:hilt-android:${Versions.hilt}"
+    const val hiltCompiler = "com.google.dagger:hilt-android-compiler:${Versions.hilt}"
 
     // jUnit
     const val jUnit = "junit:junit:${Versions.junit}"
