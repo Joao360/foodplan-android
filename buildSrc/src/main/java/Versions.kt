@@ -17,7 +17,7 @@ object Versions {
     const val retrofit = "2.9.0"
 
     // Hilt
-    const val hilt = "2.38.1"
+    const val hilt = "2.43.2"
 
     // Test
     const val junit = "4.13.2"
