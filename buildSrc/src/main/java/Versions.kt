@@ -5,8 +5,8 @@ object Versions {
 
     // AndroidX
     const val androidXCore = "1.7.0"
-    const val androidXActivity = "1.3.1"
-    const val androidXLifecycle = "2.3.1"
+    const val androidXActivity = "1.5.0"
+    const val androidXLifecycle = "2.5.0"
     const val androidXAppCompat = "1.4.1"
 
     // Jetpack
