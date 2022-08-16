@@ -14,6 +14,7 @@ object Versions {
 
     // Libs
     const val googleMaterial = "1.5.0"
+    const val retrofit = "2.9.0"
 
     // Test
     const val junit = "4.13.2"

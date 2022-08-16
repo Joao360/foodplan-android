@@ -25,4 +25,7 @@ object Dependencies {
 
     // Google
     const val androidMaterial = "com.google.android.material:material:${Versions.googleMaterial}"
+
+    // Retrofit
+    const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
 }
