@@ -1,7 +1,6 @@
 package com.joaograca.recipes.data
 
-import com.joaograca.recipes.data.mappers.ComplexSearchItemDtoMapper
-import com.joaograca.recipes.data.mappers.RecipeDtoMapper
+import com.joaograca.recipes.data.mappers.toRecipePreview
 import com.joaograca.recipes.data.remote.RecipeApi
 import com.joaograca.recipes.domain.RecipeRepository
 import com.joaograca.recipes.domain.model.Ingredient
@@ -14,7 +13,7 @@ class RecipeRepositoryImpl(
     override suspend fun searchRecipe(keyword: String): Result<List<RecipePreview>> {
         return try {
             val dto = recipeApi.searchRecipe(keyword)
-            val domain = dto.results.map(ComplexSearchItemDtoMapper::toRecipePreview)
+            val domain = dto.results.map { it.toRecipePreview() }
             Result.success(domain)
         } catch (e: Exception) {
             Result.failure(e)
@@ -26,7 +25,7 @@ class RecipeRepositoryImpl(
             val dto = recipeApi.searchRecipeByIngredient(
                 ingredients.map(Ingredient::name).joinToString(separator = ",")
             )
-            val domain = dto.map(RecipeDtoMapper::toRecipePreview)
+            val domain = dto.map { it.toRecipePreview() }
             Result.success(domain)
         } catch (e: Exception) {
             Result.failure(e)
