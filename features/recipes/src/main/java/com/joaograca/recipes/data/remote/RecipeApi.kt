@@ -16,7 +16,7 @@ interface RecipeApi {
     @GET("recipes/findByIngredients?apiKey=${API_KEY}")
     suspend fun searchRecipeByIngredient(
         @Query("ingredients") ingredients: String
-    ): RecipeDto
+    ): List<RecipeDto>
 
     companion object {
         const val BASE_URL = "https://api.spoonacular.com/"
