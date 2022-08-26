@@ -36,8 +36,12 @@ android {
 
 dependencies {
     implementation Dependencies.hilt
+    implementation Dependencies.composeUi
+    implementation Dependencies.composeMaterial
 
     kapt Dependencies.hiltCompiler
 
     testImplementation Dependencies.jUnit
+
+    androidTestImplementation Dependencies.testExt
 }
