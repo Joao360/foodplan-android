@@ -6,6 +6,7 @@ import com.joaograca.recipes.domain.RecipeRepository
 import com.joaograca.recipes.domain.model.Ingredient
 import com.joaograca.recipes.domain.model.Recipe
 import com.joaograca.recipes.domain.model.RecipePreview
+import java.util.concurrent.CancellationException
 
 class RecipeRepositoryImpl(
     private val recipeApi: RecipeApi
@@ -16,6 +17,9 @@ class RecipeRepositoryImpl(
             val domain = dto.results.map { it.toRecipePreview() }
             Result.success(domain)
         } catch (e: Exception) {
+            if (e is CancellationException) {
+                throw e
+            }
             Result.failure(e)
         }
     }
@@ -28,6 +32,9 @@ class RecipeRepositoryImpl(
             val domain = dto.map { it.toRecipePreview() }
             Result.success(domain)
         } catch (e: Exception) {
+            if (e is CancellationException) {
+                throw e
+            }
             Result.failure(e)
         }
     }
