@@ -16,6 +16,8 @@ object Dependencies {
     const val androidXLifecycleRuntimeKtx =
         "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.androidXLifecycle}"
     const val androidXAppCompat = "androidx.appcompat:appcompat:${Versions.androidXAppCompat}"
+    const val viewModelCompose =
+        "androidx.lifecycle:lifecycle-viewmodel-compose:${Versions.androidXLifecycle}"
 
     // Espresso
     const val espressoCore = "androidx.test.espresso:espresso-core:${Versions.espresso}"
@@ -24,6 +26,8 @@ object Dependencies {
     // Hilt
     const val hilt = "com.google.dagger:hilt-android:${Versions.hilt}"
     const val hiltCompiler = "com.google.dagger:hilt-android-compiler:${Versions.hilt}"
+    const val hiltNavigationCompose =
+        "androidx.hilt:hilt-navigation-compose:${Versions.hiltNavigationCompose}"
 
     // jUnit
     const val jUnit = "junit:junit:${Versions.junit}"

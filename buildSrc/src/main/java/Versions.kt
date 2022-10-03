@@ -19,6 +19,7 @@ object Versions {
 
     // Hilt
     const val hilt = "2.43.2"
+    const val hiltNavigationCompose = "1.0.0"
 
     // Test
     const val junit = "4.13.2"
