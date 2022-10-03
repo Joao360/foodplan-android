@@ -54,6 +54,7 @@ dependencies {
     implementation(Dependencies.composeUi)
     implementation(Dependencies.composeMaterial)
     implementation(Dependencies.composeUiToolingPreview)
+    implementation(Dependencies.navigation)
     implementation(Dependencies.androidXLifecycleRuntimeKtx)
     implementation(Dependencies.androidXActivityCompose)
 

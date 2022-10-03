@@ -6,6 +6,9 @@ object Dependencies {
     const val composeUiTestJunit = "androidx.compose.ui:ui-test-junit4:${Versions.compose}"
     const val composeUiTooling = "androidx.compose.ui:ui-tooling:${Versions.compose}"
 
+    // Navigation
+    const val navigation = "androidx.navigation:navigation-compose:${Versions.navigation}"
+
     // Android
     const val androidxCore = "androidx.core:core-ktx:${Versions.androidXCore}"
     const val androidXActivityCompose =

@@ -11,6 +11,7 @@ object Versions {
 
     // Jetpack
     const val compose = "1.2.0"
+    const val navigation = "2.5.2"
 
     // Libs
     const val googleMaterial = "1.5.0"
