@@ -18,6 +18,7 @@ object Versions {
     const val retrofit = "2.9.0"
     const val converterMoshi = "2.9.0"
     const val okHttp = "5.0.0-alpha.2"
+    const val timber = "5.0.1"
 
     // Hilt
     const val hilt = "2.43.2"

@@ -57,6 +57,7 @@ dependencies {
     implementation(Dependencies.navigation)
     implementation(Dependencies.androidXLifecycleRuntimeKtx)
     implementation(Dependencies.androidXActivityCompose)
+    implementation(Dependencies.timber)
 
     implementation(Dependencies.hilt)
     kapt(Dependencies.hiltCompiler)

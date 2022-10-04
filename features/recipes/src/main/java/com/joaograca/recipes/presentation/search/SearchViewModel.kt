@@ -8,6 +8,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -31,7 +32,8 @@ class SearchViewModel @Inject constructor(
                 .onSuccess { recipes ->
                     _uiState.update { it.copy(isSearching = false, recipes = recipes) }
                 }
-                .onFailure {
+                .onFailure { throwable ->
+                    Timber.e(throwable)
                     _uiState.update { it.copy(isSearching = false) }
                 }
         }

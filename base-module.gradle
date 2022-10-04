@@ -46,6 +46,7 @@ dependencies {
     implementation Dependencies.composeMaterial
     implementation Dependencies.viewModelCompose
     implementation Dependencies.hiltNavigationCompose
+    implementation Dependencies.timber
 
     kapt Dependencies.hiltCompiler
 
