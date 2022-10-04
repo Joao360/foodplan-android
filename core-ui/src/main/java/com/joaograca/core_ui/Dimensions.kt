@@ -1,5 +1,6 @@
 package com.joaograca.core_ui
 
+import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
@@ -11,3 +12,6 @@ data class Dimensions(
     val spaceLarge: Dp = 32.dp,
     val spaceExtraLarge: Dp = 64.dp
 )
+
+// Used to provide Dimensions to Composables through LocalContext
+val LocalSpacing = compositionLocalOf { Dimensions() }
