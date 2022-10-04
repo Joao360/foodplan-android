@@ -1,8 +1,10 @@
 package com.joaograca.recipes.presentation.search.component
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -30,6 +32,8 @@ fun SearchTextField(
         keyboardOptions = KeyboardOptions(
             imeAction = ImeAction.Search
         ),
-        modifier = modifier.clip(RoundedCornerShape(5.dp)),
+        modifier = modifier
+            .clip(RoundedCornerShape(5.dp))
+            .background(MaterialTheme.colors.background),
     )
 }
