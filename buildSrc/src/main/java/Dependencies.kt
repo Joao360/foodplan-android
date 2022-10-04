@@ -43,4 +43,7 @@ object Dependencies {
 
     // Timber
     const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
+
+    // Coil
+    const val coilCompose = "io.coil-kt:coil-compose:${Versions.coil}"
 }

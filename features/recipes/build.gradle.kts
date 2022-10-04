@@ -11,6 +11,8 @@ dependencies {
     "implementation"(Dependencies.converterMoshi)
     "implementation"(Dependencies.okHttp)
     "implementation"(Dependencies.loggingInterceptor)
+    "implementation"(Dependencies.coilCompose)
+    "debugImplementation"(Dependencies.composeUiTooling)
 
     "implementation"(project(Modules.coreUi))
 
