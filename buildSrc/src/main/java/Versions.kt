@@ -16,6 +16,8 @@ object Versions {
     // Libs
     const val googleMaterial = "1.5.0"
     const val retrofit = "2.9.0"
+    const val converterMoshi = "2.9.0"
+    const val okHttp = "5.0.0-alpha.2"
 
     // Hilt
     const val hilt = "2.43.2"
