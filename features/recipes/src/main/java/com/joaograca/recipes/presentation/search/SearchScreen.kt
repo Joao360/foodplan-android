@@ -10,7 +10,9 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -20,12 +22,18 @@ import com.joaograca.recipes.domain.model.RecipePreview
 import com.joaograca.recipes.presentation.search.component.RecipeListItem
 import com.joaograca.recipes.presentation.search.component.SearchTextField
 
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun SearchScreen(
     viewModel: SearchViewModel = hiltViewModel()
 ) {
     val state = viewModel.uiState.collectAsState().value
-    SearchScreenContent(state, viewModel::onQueryChange, viewModel::onSearch)
+    val keyboardController = LocalSoftwareKeyboardController.current
+
+    SearchScreenContent(state, viewModel::onQueryChange) {
+        viewModel.onSearch()
+        keyboardController?.hide()
+    }
 }
 
 @Composable
