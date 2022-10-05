@@ -2,7 +2,6 @@ package com.joaograca.recipes.presentation.search.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -30,11 +29,11 @@ fun RecipeListItem(
 
     Column(
         modifier = modifier
-            .clip(RoundedCornerShape(spacing.spaceMedium))
+            .clip(MaterialTheme.shapes.medium)
             .padding(spacing.spaceExtraSmall)
             .shadow(
                 elevation = 2.dp,
-                shape = RoundedCornerShape(spacing.spaceMedium)
+                shape = MaterialTheme.shapes.medium
             )
             .background(MaterialTheme.colors.surface)
             .padding(spacing.spaceMedium),
@@ -47,7 +46,7 @@ fun RecipeListItem(
             contentScale = ContentScale.Crop,
             modifier = Modifier
                 .size(100.dp)
-                .clip(RoundedCornerShape(5.dp)),
+                .clip(MaterialTheme.shapes.small),
             placeholder = painterResource(id = R.drawable.ic_tray_plate),
             error = painterResource(id = R.drawable.ic_error),
         )
