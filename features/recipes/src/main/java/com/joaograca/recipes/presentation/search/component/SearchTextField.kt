@@ -1,21 +1,21 @@
 package com.joaograca.recipes.presentation.search.component
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
-import androidx.compose.material.TextField
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.joaograca.core_ui.LocalSpacing
 
 @Composable
 fun SearchTextField(
@@ -24,6 +24,8 @@ fun SearchTextField(
     onSearch: () -> Unit,
     modifier: Modifier = Modifier
 ) {
+    val spacing = LocalSpacing.current
+
     TextField(
         value = text,
         onValueChange = onValueChange,
@@ -43,13 +45,19 @@ fun SearchTextField(
         leadingIcon = {
             Icon(imageVector = Icons.Default.Search, contentDescription = null)
         },
+        colors = TextFieldDefaults.textFieldColors(
+            backgroundColor = Color.Transparent,
+            focusedIndicatorColor = Color.Transparent,
+            unfocusedIndicatorColor = Color.Transparent
+        ),
         modifier = modifier
             .clip(MaterialTheme.shapes.medium)
+            .padding(spacing.spaceExtraSmall)
             .shadow(
                 elevation = 2.dp,
                 shape = MaterialTheme.shapes.medium
             )
-            .background(MaterialTheme.colors.surface),
+            .background(MaterialTheme.colors.surface)
     )
 }
 
