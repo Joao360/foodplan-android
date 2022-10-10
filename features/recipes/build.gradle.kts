@@ -12,10 +12,11 @@ dependencies {
     "implementation"(Dependencies.okHttp)
     "implementation"(Dependencies.loggingInterceptor)
     "implementation"(Dependencies.coilCompose)
-    "debugImplementation"(Dependencies.composeUiTooling)
-
     "implementation"(project(Modules.coreUi))
 
+    "debugImplementation"(Dependencies.composeUiTooling)
+
+    "testImplementation"(Dependencies.mockWebServer)
     "testImplementation"(project(Modules.core))
 
     "androidTestImplementation"(Dependencies.testExt)

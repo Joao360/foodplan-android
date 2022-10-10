@@ -1,6 +1,7 @@
 object Versions {
     // App level
     const val kotlin = "1.7.0"
+    const val kotlinCoroutines = "1.6.4"
     const val androidGradlePlugin = "7.2.2"
 
     // AndroidX
@@ -30,4 +31,5 @@ object Versions {
     const val espresso = "3.4.0"
     const val androidXTest = "1.1.3"
     const val junit5Plugin = "1.8.2.1"
+    const val mockWebServer = "4.10.0"
 }

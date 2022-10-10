@@ -1,4 +1,8 @@
 object Dependencies {
+    // Kotlin
+    const val kotlinCoroutinesTest =
+        "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.kotlinCoroutines}"
+
     // Compose
     const val composeUi = "androidx.compose.ui:ui:${Versions.compose}"
     const val composeMaterial = "androidx.compose.material:material:${Versions.compose}"
@@ -41,6 +45,7 @@ object Dependencies {
     const val converterMoshi = "com.squareup.retrofit2:converter-moshi:${Versions.converterMoshi}"
     const val okHttp = "com.squareup.okhttp3:okhttp:${Versions.okHttp}"
     const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.okHttp}"
+    const val mockWebServer = "com.squareup.okhttp3:mockwebserver:${Versions.mockWebServer}"
 
     // Timber
     const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
