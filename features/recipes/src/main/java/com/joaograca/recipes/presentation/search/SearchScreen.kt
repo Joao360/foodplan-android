@@ -59,7 +59,8 @@ private fun SearchScreenContent(
             text = state.query,
             onValueChange = onValueChange,
             onSearch = onSearch,
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
+            placeholder = stringResource(id = R.string.search_recipe_placeholder)
         )
         Spacer(modifier = Modifier.height(spacing.spaceSmall))
         LazyVerticalGrid(
