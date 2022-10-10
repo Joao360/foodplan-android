@@ -13,11 +13,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.joaograca.core_ui.LocalSpacing
+import com.joaograca.recipes.R
 import com.joaograca.recipes.domain.model.RecipePreview
 import com.joaograca.recipes.presentation.search.component.RecipeListItem
 import com.joaograca.recipes.presentation.search.component.SearchTextField
@@ -81,7 +83,7 @@ private fun SearchScreenContent(
             state.isSearching -> CircularProgressIndicator()
             state.recipes.isEmpty() -> {
                 Text(
-                    text = "Nothing to show", // TODO move to string resources
+                    text = stringResource(id = R.string.no_recipes),
                     style = MaterialTheme.typography.body1,
                     textAlign = TextAlign.Center
                 )
