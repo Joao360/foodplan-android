@@ -1,4 +1,4 @@
-package com.joaograca.recipes.data.remote
+package com.joaograca.recipes.data.remote.response
 
 const val INVALID_SEARCH_RECIPE_RESPONSE = """
     {
