@@ -16,6 +16,8 @@ dependencies {
 
     "implementation"(project(Modules.coreUi))
 
+    "testImplementation"(project(Modules.core))
+
     "androidTestImplementation"(Dependencies.testExt)
     "androidTestImplementation"(Dependencies.espressoCore)
 }

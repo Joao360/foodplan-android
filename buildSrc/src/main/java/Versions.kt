@@ -29,4 +29,5 @@ object Versions {
     const val junit = "5.8.1"
     const val espresso = "3.4.0"
     const val androidXTest = "1.1.3"
+    const val junit5Plugin = "1.8.2.1"
 }

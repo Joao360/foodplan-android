@@ -3,6 +3,7 @@ plugins {
     kotlin("android")
     id("dagger.hilt.android.plugin")
     kotlin("kapt")
+    id("de.mannodermaus.android-junit5")
 }
 
 android {
