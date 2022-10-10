@@ -26,7 +26,7 @@ object Versions {
     const val hiltNavigationCompose = "1.0.0"
 
     // Test
-    const val junit = "4.13.2"
+    const val junit = "5.8.1"
     const val espresso = "3.4.0"
     const val androidXTest = "1.1.3"
 }

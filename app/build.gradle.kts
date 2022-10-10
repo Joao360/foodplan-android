@@ -64,7 +64,8 @@ dependencies {
 
     implementation(project(Modules.recipes))
 
-    testImplementation(Dependencies.jUnit)
+    testImplementation(Dependencies.jUnitApi)
+    testRuntimeOnly(Dependencies.jUnitEngine)
 
     androidTestImplementation(Dependencies.testExt)
     androidTestImplementation(Dependencies.espressoCore)

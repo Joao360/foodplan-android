@@ -30,7 +30,8 @@ object Dependencies {
         "androidx.hilt:hilt-navigation-compose:${Versions.hiltNavigationCompose}"
 
     // jUnit
-    const val jUnit = "junit:junit:${Versions.junit}"
+    const val jUnitApi = "org.junit.jupiter:junit-jupiter-api:${Versions.junit}"
+    const val jUnitEngine = "org.junit.jupiter:junit-jupiter-engine:${Versions.junit}"
 
     // Google
     const val androidMaterial = "com.google.android.material:material:${Versions.googleMaterial}"
