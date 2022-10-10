@@ -1,4 +1,4 @@
-package com.joaograca.recipes
+package com.joaograca.core
 
 import org.junit.Test
 
