@@ -37,7 +37,7 @@ object Dependencies {
     const val jUnitApi = "org.junit.jupiter:junit-jupiter-api:${Versions.junit}"
     const val jUnitEngine = "org.junit.jupiter:junit-jupiter-engine:${Versions.junit}"
 
-    // Google
+    // Material
     const val androidMaterial = "com.google.android.material:material:${Versions.googleMaterial}"
 
     // Retrofit
@@ -52,4 +52,7 @@ object Dependencies {
 
     // Coil
     const val coilCompose = "io.coil-kt:coil-compose:${Versions.coil}"
+
+    // Mockk
+    const val mockk = "io.mockk:mockk:${Versions.mockk}"
 }

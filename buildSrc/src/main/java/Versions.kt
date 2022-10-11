@@ -21,6 +21,7 @@ object Versions {
     const val okHttp = "5.0.0-alpha.2"
     const val timber = "5.0.1"
     const val coil = "2.2.2"
+    const val mockk = "1.13.2"
 
     // Hilt
     const val hilt = "2.43.2"
