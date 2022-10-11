@@ -50,7 +50,7 @@ internal class RecipeRepositoryImplTest {
     }
 
     @Test
-    fun `should return success when valid response`() = runTest {
+    fun `should return success when searching recipes with a valid response`() = runTest {
         // Given
         mockWebServer.enqueue(
             MockResponse()
@@ -66,7 +66,7 @@ internal class RecipeRepositoryImplTest {
     }
 
     @Test
-    fun `should return recipes when valid response`() = runTest {
+    fun `should return recipes when searching recipes with a valid response`() = runTest {
         // Given
         mockWebServer.enqueue(
             MockResponse()
@@ -83,23 +83,24 @@ internal class RecipeRepositoryImplTest {
     }
 
     @Test
-    fun `should return failure when invalid response code`() = runTest {
-        // Given
-        mockWebServer.enqueue(
-            MockResponse()
-                .setResponseCode(403)
-                .setBody(VALID_SEARCH_RECIPE_RESPONSE)
-        )
+    fun `should return failure when searching recipes and we get an invalid response code`() =
+        runTest {
+            // Given
+            mockWebServer.enqueue(
+                MockResponse()
+                    .setResponseCode(403)
+                    .setBody(VALID_SEARCH_RECIPE_RESPONSE)
+            )
 
-        // When
-        val result = repository.searchRecipe("burger")
+            // When
+            val result = repository.searchRecipe("burger")
 
-        // Then
+            // Then
         assertTrue(result.isFailure)
     }
 
     @Test
-    fun `should return failure when malformed response`() = runTest {
+    fun `should return failure when searching recipes and we get a malformed response`() = runTest {
         // Given
         mockWebServer.enqueue(
             MockResponse()
@@ -115,40 +116,43 @@ internal class RecipeRepositoryImplTest {
     }
 
     @Test
-    fun `should return success when valid response on search recipe by ingredients`() = runTest {
-        // Given
-        mockWebServer.enqueue(
-            MockResponse()
-                .setResponseCode(200)
-                .setBody(VALID_SEARCH_RECIPE_BY_INGREDIENTS_RESPONSE)
-        )
+    fun `should return success when searching recipe by ingredients with valid response`() =
+        runTest {
+            // Given
+            mockWebServer.enqueue(
+                MockResponse()
+                    .setResponseCode(200)
+                    .setBody(VALID_SEARCH_RECIPE_BY_INGREDIENTS_RESPONSE)
+            )
 
-        // When
-        val result = repository.searchRecipeByIngredients(listOf(Ingredient("tomato")))
+            // When
+            val result = repository.searchRecipeByIngredients(listOf(Ingredient("tomato")))
 
-        // Then
+            // Then
         assertTrue(result.isSuccess)
     }
 
     @Test
-    fun `should return recipes when valid response on search recipe by ingredients`() = runTest {
-        // Given
-        mockWebServer.enqueue(
-            MockResponse()
-                .setResponseCode(200)
-                .setBody(VALID_SEARCH_RECIPE_BY_INGREDIENTS_RESPONSE)
-        )
+    fun `should return recipes when searching recipe by ingredients with a valid response`() =
+        runTest {
+            // Given
+            mockWebServer.enqueue(
+                MockResponse()
+                    .setResponseCode(200)
+                    .setBody(VALID_SEARCH_RECIPE_BY_INGREDIENTS_RESPONSE)
+            )
 
-        // When
-        val result = repository.searchRecipeByIngredients(listOf(Ingredient("tomato"))).getOrNull()
+            // When
+            val result =
+                repository.searchRecipeByIngredients(listOf(Ingredient("tomato"))).getOrNull()
 
-        // Then
+            // Then
         assertNotNull(result)
         assertEquals(10, result?.size)
     }
 
     @Test
-    fun `should return failure when invalid response code on search recipe by ingredients`() =
+    fun `should return failure when searching recipe by ingredients and we get an invalid response code`() =
         runTest {
             // Given
             mockWebServer.enqueue(
@@ -165,7 +169,7 @@ internal class RecipeRepositoryImplTest {
         }
 
     @Test
-    fun `should return failure when response is malformed on search recipe by ingredients`() =
+    fun `should return failure when searching recipe by ingredients and the response is malformed`() =
         runTest {
             // Given
             mockWebServer.enqueue(
