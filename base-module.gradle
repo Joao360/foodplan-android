@@ -53,6 +53,7 @@ dependencies {
 
     testImplementation Dependencies.kotlinCoroutinesTest
     testImplementation Dependencies.mockk
+    testImplementation Dependencies.turbine
     testImplementation Dependencies.jUnitApi
     testRuntimeOnly Dependencies.jUnitEngine
 

@@ -22,6 +22,7 @@ object Versions {
     const val timber = "5.0.1"
     const val coil = "2.2.2"
     const val mockk = "1.13.2"
+    const val turbine = "0.11.0"
 
     // Hilt
     const val hilt = "2.43.2"

@@ -55,4 +55,7 @@ object Dependencies {
 
     // Mockk
     const val mockk = "io.mockk:mockk:${Versions.mockk}"
+
+    // Turbine
+    const val turbine = "app.cash.turbine:turbine:${Versions.turbine}"
 }
