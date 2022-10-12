@@ -1,10 +1,7 @@
 package com.joaograca.recipes.data
 
 import com.joaograca.recipes.data.remote.RecipeApi
-import com.joaograca.recipes.data.remote.response.INVALID_SEARCH_RECIPE_BY_INGREDIENTS_RESPONSE
-import com.joaograca.recipes.data.remote.response.INVALID_SEARCH_RECIPE_RESPONSE
-import com.joaograca.recipes.data.remote.response.VALID_SEARCH_RECIPE_BY_INGREDIENTS_RESPONSE
-import com.joaograca.recipes.data.remote.response.VALID_SEARCH_RECIPE_RESPONSE
+import com.joaograca.recipes.data.remote.response.*
 import com.joaograca.recipes.domain.model.Ingredient
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
@@ -96,8 +93,8 @@ internal class RecipeRepositoryImplTest {
             val result = repository.searchRecipe("burger")
 
             // Then
-        assertTrue(result.isFailure)
-    }
+            assertTrue(result.isFailure)
+        }
 
     @Test
     fun `should return failure when searching recipes and we get a malformed response`() = runTest {
@@ -129,8 +126,8 @@ internal class RecipeRepositoryImplTest {
             val result = repository.searchRecipeByIngredients(listOf(Ingredient("tomato")))
 
             // Then
-        assertTrue(result.isSuccess)
-    }
+            assertTrue(result.isSuccess)
+        }
 
     @Test
     fun `should return recipes when searching recipe by ingredients with a valid response`() =
@@ -147,9 +144,9 @@ internal class RecipeRepositoryImplTest {
                 repository.searchRecipeByIngredients(listOf(Ingredient("tomato"))).getOrNull()
 
             // Then
-        assertNotNull(result)
-        assertEquals(10, result?.size)
-    }
+            assertNotNull(result)
+            assertEquals(10, result?.size)
+        }
 
     @Test
     fun `should return failure when searching recipe by ingredients and we get an invalid response code`() =
@@ -180,6 +177,55 @@ internal class RecipeRepositoryImplTest {
 
             // When
             val result = repository.searchRecipeByIngredients(listOf(Ingredient("tomato")))
+
+            // Then
+            assertTrue(result.isFailure)
+        }
+
+    @Test
+    fun `should return success when getting recipe and response is valid`() = runTest {
+        // Given
+        mockWebServer.enqueue(
+            MockResponse()
+                .setResponseCode(200)
+                .setBody(VALID_GET_RECIPE_RESPONSE)
+        )
+
+        // When
+        val result = repository.getRecipe(123)
+
+        // Then
+        assertTrue(result.isSuccess)
+    }
+
+    @Test
+    fun `should return failure when getting recipe and response is malformed`() = runTest {
+        // Given
+        mockWebServer.enqueue(
+            MockResponse()
+                .setResponseCode(200)
+                .setBody(INVALID_GET_RECIPE_RESPONSE)
+        )
+
+        // When
+        val result = repository.getRecipe(123)
+
+        // Then
+        assertTrue(result.isFailure)
+    }
+
+    @Test
+    fun `should return failure when getting recipe and we get an invalid response code`() =
+        runTest {
+            // Given
+            mockWebServer.enqueue(
+                MockResponse()
+                    .setResponseCode(403)
+                    .setBody(VALID_GET_RECIPE_RESPONSE)
+            )
+
+            // When
+            val result = repository.getRecipe(123)
 
             // Then
             assertTrue(result.isFailure)
