@@ -4,15 +4,15 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
-import androidx.compose.material.CircularProgressIndicator
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -20,6 +20,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.joaograca.core_ui.LocalSpacing
+import com.joaograca.core_ui.UiText
 import com.joaograca.recipes.R
 import com.joaograca.recipes.domain.model.RecipePreview
 import com.joaograca.recipes.presentation.search.component.RecipeListItem
@@ -31,6 +32,7 @@ fun SearchScreenRoute(
     viewModel: SearchViewModel = hiltViewModel()
 ) {
     val state by viewModel.uiState.collectAsState()
+    val errorMessage by viewModel.errorMessage.collectAsState()
     val keyboardController = LocalSoftwareKeyboardController.current
 
     val onSearch: () -> Unit = {
@@ -41,7 +43,9 @@ fun SearchScreenRoute(
     SearchScreen(
         state = state,
         onValueChange = viewModel::onQueryChange,
-        onSearch = onSearch
+        onSearch = onSearch,
+        errorMessage = errorMessage,
+        onErrorMessageShown = viewModel::onErrorMessageShown
     )
 }
 
@@ -49,13 +53,24 @@ fun SearchScreenRoute(
 private fun SearchScreen(
     state: SearchUiState,
     onValueChange: (String) -> Unit,
-    onSearch: () -> Unit
+    onSearch: () -> Unit,
+    errorMessage: UiText?,
+    onErrorMessageShown: () -> Unit
 ) {
+    val context = LocalContext.current
     val spacing = LocalSpacing.current
+    val scaffoldState = rememberScaffoldState()
 
-    Column(
+    LaunchedEffect(scaffoldState.snackbarHostState, errorMessage) {
+        errorMessage?.let {
+            scaffoldState.snackbarHostState.showSnackbar(it.asString(context))
+            onErrorMessageShown()
+        }
+    }
+
+    Scaffold(
+        scaffoldState = scaffoldState,
         modifier = Modifier
-            .fillMaxSize()
             .padding(
                 start = spacing.spaceMedium,
                 end = spacing.spaceMedium,
@@ -128,7 +143,13 @@ fun SearchScreenWithData() {
         recipeListUiState = recipeListUiState
     )
 
-    SearchScreen(state = state, onSearch = {}, onValueChange = {})
+    SearchScreen(
+        state = state,
+        onValueChange = {},
+        onSearch = {},
+        errorMessage = null,
+        onErrorMessageShown = {}
+    )
 }
 
 @Preview
@@ -139,7 +160,13 @@ fun SearchScreenEmpty() {
         recipeListUiState = RecipeListUiState.Empty
     )
 
-    SearchScreen(state = state, onSearch = {}, onValueChange = {})
+    SearchScreen(
+        state = state,
+        onValueChange = {},
+        onSearch = {},
+        errorMessage = null,
+        onErrorMessageShown = {}
+    )
 }
 
 @Preview
@@ -150,5 +177,11 @@ fun SearchScreenLoading() {
         recipeListUiState = RecipeListUiState.Loading
     )
 
-    SearchScreen(state = state, onSearch = {}, onValueChange = {})
+    SearchScreen(
+        state = state,
+        onValueChange = {},
+        onSearch = {},
+        errorMessage = null,
+        onErrorMessageShown = {}
+    )
 }

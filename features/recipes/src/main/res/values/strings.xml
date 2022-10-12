@@ -3,4 +3,5 @@
     <string name="no_recipes">Nothing to show</string>
     <string name="search_recipe_placeholder">Search for any recipe</string>
     <string name="search">Search</string>
+    <string name="blank_query_error">Missing required search text</string>
 </resources>

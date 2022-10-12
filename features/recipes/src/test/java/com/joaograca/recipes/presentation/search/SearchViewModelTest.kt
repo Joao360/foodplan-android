@@ -9,8 +9,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.runTest
-import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Assertions.assertNotEquals
+import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
@@ -116,5 +115,31 @@ internal class SearchViewModelTest {
 
         // Then
         assertEquals(expectedQuery, viewModel.uiState.value.query)
+    }
+
+    @Test
+    fun `should set error message when search recipe returns a failure`() {
+        // Given
+        coEvery { searchRecipe(any()) } returns Result.failure(Exception("Oh no!"))
+
+        // When
+        viewModel.onSearch()
+
+        // Then
+        assertNotNull(viewModel.errorMessage.value)
+    }
+
+    @Test
+    fun `should remove error message on error message shown`() {
+        // Given
+        coEvery { searchRecipe(any()) } returns Result.failure(Exception("Oh no!"))
+        viewModel.onSearch()
+        assertNotNull(viewModel.errorMessage.value)
+
+        // When
+        viewModel.onErrorMessageShown()
+
+        // Then
+        assertNull(viewModel.errorMessage.value)
     }
 }
