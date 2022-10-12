@@ -9,7 +9,8 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.runTest
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertNotEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
@@ -30,7 +31,10 @@ internal class SearchViewModelTest {
     @Test
     fun `should emit is searching when calling onSearch`() = runTest {
         // Given
-        assertFalse(viewModel.uiState.value.isSearching)
+        assertNotEquals(
+            RecipeListUiState.Loading::class,
+            viewModel.uiState.value.recipeListUiState::class
+        )
         coEvery { searchRecipe(any()) } coAnswers {
             delay(10L) // Delay used to avoid emitting the result at the same time as the loading
             Result.success(
@@ -42,7 +46,10 @@ internal class SearchViewModelTest {
         viewModel.onSearch()
 
         // Then
-        assertTrue(viewModel.uiState.value.isSearching)
+        assertEquals(
+            RecipeListUiState.Loading::class,
+            viewModel.uiState.value.recipeListUiState::class
+        )
     }
 
     @Test
@@ -59,7 +66,8 @@ internal class SearchViewModelTest {
         advanceUntilIdle()
 
         // Then
-        val recipesResult = viewModel.uiState.value.recipes
+        val recipesResult =
+            (viewModel.uiState.value.recipeListUiState as RecipeListUiState.Recipes).list
         recipes.forEachIndexed { index, recipePreview ->
             assertEquals(recipePreview, recipesResult[index])
         }
@@ -75,7 +83,10 @@ internal class SearchViewModelTest {
         advanceUntilIdle()
 
         // Then
-        assertFalse(viewModel.uiState.value.isSearching)
+        assertNotEquals(
+            RecipeListUiState.Loading::class,
+            viewModel.uiState.value.recipeListUiState::class
+        )
     }
 
     @Test
@@ -88,7 +99,10 @@ internal class SearchViewModelTest {
         advanceUntilIdle()
 
         // Then
-        assertFalse(viewModel.uiState.value.isSearching)
+        assertNotEquals(
+            RecipeListUiState.Loading::class,
+            viewModel.uiState.value.recipeListUiState::class
+        )
     }
 
     @Test

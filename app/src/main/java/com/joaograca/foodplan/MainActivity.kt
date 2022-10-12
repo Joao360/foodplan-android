@@ -14,7 +14,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.joaograca.foodplan.navigation.Route
 import com.joaograca.foodplan.ui.theme.FoodPlanTheme
-import com.joaograca.recipes.presentation.search.SearchScreen
+import com.joaograca.recipes.presentation.search.SearchScreenRoute
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -37,7 +37,7 @@ class MainActivity : ComponentActivity() {
                         startDestination = Route.SEARCH
                     ) {
                         composable(Route.SEARCH) {
-                            SearchScreen()
+                            SearchScreenRoute()
                         }
                     }
                 }

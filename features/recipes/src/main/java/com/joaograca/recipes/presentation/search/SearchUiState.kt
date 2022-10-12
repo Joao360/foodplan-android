@@ -4,6 +4,13 @@ import com.joaograca.recipes.domain.model.RecipePreview
 
 data class SearchUiState(
     val query: String = "",
-    val isSearching: Boolean = false,
-    val recipes: List<RecipePreview> = emptyList()
+    val recipeListUiState: RecipeListUiState = RecipeListUiState.Empty
 )
+
+sealed interface RecipeListUiState {
+    object Loading : RecipeListUiState
+
+    data class Recipes(val list: List<RecipePreview>) : RecipeListUiState
+
+    object Empty : RecipeListUiState
+}

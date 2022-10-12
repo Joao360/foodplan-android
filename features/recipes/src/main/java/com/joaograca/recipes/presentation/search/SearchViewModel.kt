@@ -25,16 +25,16 @@ class SearchViewModel @Inject constructor(
 
     fun onSearch() {
         viewModelScope.launch {
-            _uiState.update { it.copy(isSearching = true) }
+            _uiState.update { it.copy(recipeListUiState = RecipeListUiState.Loading) }
             val recipe = _uiState.value.query
 
             searchRecipe(recipe)
                 .onSuccess { recipes ->
-                    _uiState.update { it.copy(isSearching = false, recipes = recipes) }
+                    _uiState.update { it.copy(recipeListUiState = RecipeListUiState.Recipes(recipes)) }
                 }
                 .onFailure { throwable ->
                     Timber.e(throwable)
-                    _uiState.update { it.copy(isSearching = false) }
+                    _uiState.update { it.copy(recipeListUiState = RecipeListUiState.Empty) }
                 }
         }
     }

@@ -9,6 +9,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
@@ -26,20 +27,26 @@ import com.joaograca.recipes.presentation.search.component.SearchTextField
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
-fun SearchScreen(
+fun SearchScreenRoute(
     viewModel: SearchViewModel = hiltViewModel()
 ) {
-    val state = viewModel.uiState.collectAsState().value
+    val state by viewModel.uiState.collectAsState()
     val keyboardController = LocalSoftwareKeyboardController.current
 
-    SearchScreenContent(state, viewModel::onQueryChange) {
+    val onSearch: () -> Unit = {
         viewModel.onSearch()
         keyboardController?.hide()
     }
+
+    SearchScreen(
+        state = state,
+        onValueChange = viewModel::onQueryChange,
+        onSearch = onSearch
+    )
 }
 
 @Composable
-private fun SearchScreenContent(
+private fun SearchScreen(
     state: SearchUiState,
     onValueChange: (String) -> Unit,
     onSearch: () -> Unit
@@ -63,49 +70,85 @@ private fun SearchScreenContent(
             placeholder = stringResource(id = R.string.search_recipe_placeholder)
         )
         Spacer(modifier = Modifier.height(spacing.spaceSmall))
-        LazyVerticalGrid(
-            columns = GridCells.Adaptive(minSize = 128.dp),
-            modifier = Modifier
-                .fillMaxSize()
-        ) {
-            items(state.recipes) { recipe ->
-                RecipeListItem(
-                    recipe = recipe,
-                    modifier = Modifier.aspectRatio(1f)
-                )
+
+        when (state.recipeListUiState) {
+            RecipeListUiState.Empty -> {
+                Box(
+                    modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        text = stringResource(id = R.string.no_recipes),
+                        style = MaterialTheme.typography.body1,
+                        textAlign = TextAlign.Center
+                    )
+                }
+            }
+            RecipeListUiState.Loading -> {
+                Box(
+                    modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    CircularProgressIndicator()
+                }
+            }
+            is RecipeListUiState.Recipes -> {
+                LazyVerticalGrid(
+                    columns = GridCells.Adaptive(minSize = 128.dp),
+                    modifier = Modifier
+                        .fillMaxSize()
+                ) {
+                    items(state.recipeListUiState.list) { recipe ->
+                        RecipeListItem(
+                            recipe = recipe,
+                            modifier = Modifier.aspectRatio(1f)
+                        )
+                    }
+                }
             }
         }
-    }
-    Box(
-        modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
-    ) {
-        when {
-            state.isSearching -> CircularProgressIndicator()
-            state.recipes.isEmpty() -> {
-                Text(
-                    text = stringResource(id = R.string.no_recipes),
-                    style = MaterialTheme.typography.body1,
-                    textAlign = TextAlign.Center
-                )
-            }
-        }
+
     }
 }
 
 @Preview
 @Composable
-fun DefaultPreview() {
-    val state = SearchUiState(
-        query = "Tomato",
-        isSearching = false,
-        recipes = listOf(
+fun SearchScreenWithData() {
+    val recipeListUiState = RecipeListUiState.Recipes(
+        list = listOf(
             RecipePreview(id = 1, name = "Tomato sauce", imageUrl = ""),
             RecipePreview(id = 1, name = "Neque porro quisquam ", imageUrl = ""),
             RecipePreview(id = 1, name = "Excepteur sint occaecat cupidatat", imageUrl = ""),
-            RecipePreview(id = 1, name = "incididunt ", imageUrl = ""),
+            RecipePreview(id = 1, name = "incididunt ", imageUrl = "")
         )
     )
 
-    SearchScreenContent(state = state, onSearch = {}, onValueChange = {})
+    val state = SearchUiState(
+        query = "Tomato",
+        recipeListUiState = recipeListUiState
+    )
+
+    SearchScreen(state = state, onSearch = {}, onValueChange = {})
+}
+
+@Preview
+@Composable
+fun SearchScreenEmpty() {
+    val state = SearchUiState(
+        query = "Tomato",
+        recipeListUiState = RecipeListUiState.Empty
+    )
+
+    SearchScreen(state = state, onSearch = {}, onValueChange = {})
+}
+
+@Preview
+@Composable
+fun SearchScreenLoading() {
+    val state = SearchUiState(
+        query = "Tomato",
+        recipeListUiState = RecipeListUiState.Loading
+    )
+
+    SearchScreen(state = state, onSearch = {}, onValueChange = {})
 }
