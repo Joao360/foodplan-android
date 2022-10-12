@@ -12,10 +12,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.joaograca.core_ui.LocalSpacing
+import com.joaograca.recipes.R
 
 @Composable
 fun SearchTextField(
@@ -44,7 +46,10 @@ fun SearchTextField(
             Text(text = placeholder)
         },
         leadingIcon = {
-            Icon(imageVector = Icons.Default.Search, contentDescription = null)
+            Icon(
+                imageVector = Icons.Default.Search,
+                contentDescription = stringResource(id = R.string.search)
+            )
         },
         colors = TextFieldDefaults.textFieldColors(
             backgroundColor = Color.Transparent,

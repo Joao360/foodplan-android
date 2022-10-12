@@ -42,7 +42,7 @@ fun RecipeListItem(
     ) {
         AsyncImage(
             model = recipe.imageUrl,
-            contentDescription = null,
+            contentDescription = recipe.name,
             contentScale = ContentScale.Crop,
             modifier = Modifier
                 .size(100.dp)
