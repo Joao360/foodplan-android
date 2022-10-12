@@ -4,7 +4,7 @@ import com.joaograca.recipes.data.remote.dto.RecipeDtoFactory
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
-internal class RecipeDtoMapperTest {
+internal class RecipeSearchDtoMapperTest {
     @Test
     fun `should map objects correctly`() {
         // Given

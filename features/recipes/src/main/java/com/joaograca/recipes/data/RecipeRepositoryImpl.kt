@@ -1,5 +1,6 @@
 package com.joaograca.recipes.data
 
+import com.joaograca.recipes.data.mappers.toRecipe
 import com.joaograca.recipes.data.mappers.toRecipePreview
 import com.joaograca.recipes.data.remote.RecipeApi
 import com.joaograca.recipes.domain.RecipeRepository
@@ -41,5 +42,17 @@ class RecipeRepositoryImpl(
 
     override suspend fun createRecipe(recipe: Recipe): Result<Unit> {
         TODO("Not yet implemented")
+    }
+
+    override suspend fun getRecipe(id: Int): Result<Recipe> {
+        return try {
+            val dto = recipeApi.getRecipe(id)
+            Result.success(dto.toRecipe())
+        } catch (e: Exception) {
+            if (e is CancellationException) {
+                throw e
+            }
+            Result.failure(e)
+        }
     }
 }

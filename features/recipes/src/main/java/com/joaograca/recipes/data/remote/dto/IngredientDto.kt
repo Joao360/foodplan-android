@@ -12,5 +12,6 @@ data class IngredientDto(
     val originalName: String,
     val unit: String,
     val unitLong: String,
-    val unitShort: String
+    val unitShort: String,
+    val measures: MeasureDto?,
 )

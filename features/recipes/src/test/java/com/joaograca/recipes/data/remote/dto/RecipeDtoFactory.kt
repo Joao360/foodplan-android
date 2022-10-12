@@ -5,8 +5,8 @@ import kotlin.random.Random
 
 class RecipeDtoFactory {
     companion object {
-        fun create(): RecipeDto {
-            return RecipeDto(
+        fun create(): RecipeSearchDto {
+            return RecipeSearchDto(
                 id = Random.nextInt(),
                 image = Random.nextString(Random.nextInt(10)),
                 imageType = Random.nextString(Random.nextInt(10)),

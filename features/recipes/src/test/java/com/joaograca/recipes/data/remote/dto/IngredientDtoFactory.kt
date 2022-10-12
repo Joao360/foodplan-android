@@ -21,7 +21,8 @@ class IngredientDtoFactory {
                 originalName = Random.nextString(Random.nextInt(10)),
                 unit = Random.nextString(Random.nextInt(5)),
                 unitLong = Random.nextString(Random.nextInt(10)),
-                unitShort = Random.nextString(Random.nextInt(5))
+                unitShort = Random.nextString(Random.nextInt(5)),
+                measures = null
             )
         }
     }

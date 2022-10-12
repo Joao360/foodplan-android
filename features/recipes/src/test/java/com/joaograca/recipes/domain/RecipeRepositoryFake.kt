@@ -1,9 +1,6 @@
 package com.joaograca.recipes.domain
 
-import com.joaograca.recipes.domain.model.Ingredient
-import com.joaograca.recipes.domain.model.Recipe
-import com.joaograca.recipes.domain.model.RecipePreview
-import com.joaograca.recipes.domain.model.RecipePreviewFactory
+import com.joaograca.recipes.domain.model.*
 
 class RecipeRepositoryFake : RecipeRepository {
 
@@ -24,5 +21,9 @@ class RecipeRepositoryFake : RecipeRepository {
 
     override suspend fun createRecipe(recipe: Recipe): Result<Unit> {
         return exception?.let { Result.failure(it) } ?: Result.success(Unit)
+    }
+
+    override suspend fun getRecipe(id: Int): Result<Recipe> {
+        return exception?.let { Result.failure(it) } ?: Result.success(RecipeFactory.create())
     }
 }

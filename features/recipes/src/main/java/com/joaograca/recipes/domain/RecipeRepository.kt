@@ -11,4 +11,6 @@ interface RecipeRepository {
     suspend fun searchRecipeByIngredients(ingredients: List<Ingredient>): Result<List<RecipePreview>>
 
     suspend fun createRecipe(recipe: Recipe): Result<Unit>
+
+    suspend fun getRecipe(id: Int): Result<Recipe>
 }
