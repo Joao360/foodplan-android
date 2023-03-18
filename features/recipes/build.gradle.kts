@@ -9,6 +9,7 @@ dependencies {
     "implementation"(Dependencies.androidMaterial)
     "implementation"(Dependencies.retrofit)
     "implementation"(Dependencies.converterMoshi)
+    "implementation"(Dependencies.moshiKotlin)
     "implementation"(Dependencies.okHttp)
     "implementation"(Dependencies.loggingInterceptor)
     "implementation"(Dependencies.coilCompose)
@@ -16,6 +17,7 @@ dependencies {
 
     "debugImplementation"(Dependencies.composeUiTooling)
 
+    "testImplementation"(Dependencies.moshiKotlin)
     "testImplementation"(Dependencies.mockWebServer)
     "testImplementation"(project(Modules.core))
 
