@@ -2,17 +2,17 @@ package com.joaograca.recipes.data.remote.dto
 
 import com.joaograca.recipes.data.remote.response.INVALID_GET_RECIPE_RESPONSE
 import com.joaograca.recipes.data.remote.response.VALID_GET_RECIPE_RESPONSE
+import com.joaograca.recipes.di.RecipeModule
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.JsonDataException
 import com.squareup.moshi.Moshi
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
 internal class RecipeDtoTest {
 
-    private val moshi: Moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
+    private val moshi: Moshi = RecipeModule.providesMoshi()
     private val adapter: JsonAdapter<RecipeDto> = moshi.adapter(RecipeDto::class.java)
 
     @Test

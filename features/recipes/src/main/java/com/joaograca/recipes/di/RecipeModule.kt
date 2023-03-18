@@ -34,8 +34,13 @@ object RecipeModule {
 
     @Provides
     @Singleton
-    fun providesConverterFactory(): Converter.Factory {
-        val moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
+    fun providesMoshi(): Moshi = Moshi.Builder()
+        .add(KotlinJsonAdapterFactory())
+        .build()
+
+    @Provides
+    @Singleton
+    fun providesConverterFactory(moshi: Moshi): Converter.Factory {
         return MoshiConverterFactory.create(moshi)
     }
 
