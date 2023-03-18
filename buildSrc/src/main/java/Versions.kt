@@ -2,7 +2,7 @@ object Versions {
     // App level
     const val kotlin = "1.7.0"
     const val kotlinCoroutines = "1.6.4"
-    const val androidGradlePlugin = "7.2.2"
+    const val androidGradlePlugin = "7.4.2"
 
     // AndroidX
     const val androidXCore = "1.7.0"
