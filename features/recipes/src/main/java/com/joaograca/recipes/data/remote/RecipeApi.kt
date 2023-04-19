@@ -25,7 +25,6 @@ interface RecipeApi {
         @Path("id") id: Int
     ): RecipeDto
 
-
     companion object {
         const val BASE_URL = "https://api.spoonacular.com/"
         const val API_KEY = BuildConfig.API_KEY
