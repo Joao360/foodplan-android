@@ -1,30 +1,46 @@
 package com.joaograca.recipes.data.remote.dto
 
-import com.joaograca.core.util.nextString
-import kotlin.random.Random
-
-class RecipeDtoFactory {
-    companion object {
-        fun create(): RecipeSearchDto {
-            return RecipeSearchDto(
-                id = Random.nextInt(),
-                image = Random.nextString(Random.nextInt(10)),
-                imageType = Random.nextString(Random.nextInt(10)),
-                likes = Random.nextInt(),
-                missedIngredientCount = Random.nextInt(),
-                missedIngredients = listOf(
-                    IngredientDtoFactory.create(),
-                    IngredientDtoFactory.create()
-                ),
-                title = Random.nextString(Random.nextInt(10)),
-                unusedIngredients = listOf(
-                    IngredientDtoFactory.create()
-                ),
-                usedIngredientCount = Random.nextInt(),
-                usedIngredients = listOf(
-                    IngredientDtoFactory.create()
-                )
-            )
-        }
+object RecipeDtoFactory {
+    fun create(): RecipeDto {
+        return RecipeDto(
+            id = 1,
+            title = "",
+            image = "",
+            imageType = "",
+            nutrition = null,
+            servings = 1,
+            readyInMinutes = 1,
+            license = "",
+            sourceName = "",
+            sourceUrl = "",
+            spoonacularSourceUrl = "",
+            aggregateLikes = 1,
+            healthScore = 1F,
+            spoonacularScore = 1F,
+            pricePerServing = 1F,
+            analyzedInstructions = emptyList(),
+            cheap = false,
+            creditsText = "",
+            cuisines = emptyList(),
+            dairyFree = false,
+            diets = emptyList(),
+            gaps = "",
+            glutenFree = false,
+            instructions = "",
+            ketogenic = false,
+            lowFodmap = false,
+            occasions = emptyList(),
+            sustainable = false,
+            vegan = false,
+            vegetarian = false,
+            veryHealthy = false,
+            veryPopular = false,
+            whole30 = false,
+            weightWatcherSmartPoints = 1,
+            dishTypes = emptyList(),
+            extendedIngredients = emptyList(),
+            summary = "",
+            winePairing = WinePairingDtoFactory.create()
+        )
     }
 }

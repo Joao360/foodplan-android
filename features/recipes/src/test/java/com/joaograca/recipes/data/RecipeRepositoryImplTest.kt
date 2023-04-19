@@ -3,6 +3,8 @@ package com.joaograca.recipes.data
 import com.joaograca.recipes.data.remote.RecipeApi
 import com.joaograca.recipes.data.remote.response.*
 import com.joaograca.recipes.domain.model.Ingredient
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import okhttp3.OkHttpClient
@@ -32,8 +34,10 @@ internal class RecipeRepositoryImplTest {
             .readTimeout(1, TimeUnit.SECONDS)
             .connectTimeout(1, TimeUnit.SECONDS)
             .build()
+        val moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
+        val converterFactory = MoshiConverterFactory.create(moshi)
         api = Retrofit.Builder()
-            .addConverterFactory(MoshiConverterFactory.create())
+            .addConverterFactory(converterFactory)
             .client(okHttpClient)
             .baseUrl(mockWebServer.url("/"))
             .build()
