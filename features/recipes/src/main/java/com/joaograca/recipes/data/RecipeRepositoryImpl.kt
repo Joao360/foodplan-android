@@ -14,8 +14,8 @@ class RecipeRepositoryImpl(
 ) : RecipeRepository {
     override suspend fun searchRecipe(keyword: String): Result<List<RecipePreview>> {
         return try {
-            val dto = recipeApi.searchRecipe(keyword)
-            val domain = dto.results.map { it.toRecipePreview() }
+            val pagedNetworkResponse = recipeApi.searchRecipe(keyword)
+            val domain = pagedNetworkResponse.results.map { it.toRecipePreview() }
             Result.success(domain)
         } catch (e: Exception) {
             if (e is CancellationException) {

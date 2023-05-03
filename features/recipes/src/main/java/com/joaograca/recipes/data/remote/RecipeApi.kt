@@ -1,7 +1,8 @@
 package com.joaograca.recipes.data.remote
 
 import com.joaograca.recipes.BuildConfig
-import com.joaograca.recipes.data.remote.dto.ComplexSearchDto
+import com.joaograca.recipes.data.remote.dto.ComplexSearchItemDto
+import com.joaograca.recipes.data.remote.dto.PagedNetworkResponse
 import com.joaograca.recipes.data.remote.dto.RecipeDto
 import com.joaograca.recipes.data.remote.dto.RecipeSearchDto
 import retrofit2.http.GET
@@ -13,7 +14,7 @@ interface RecipeApi {
     @GET("recipes/complexSearch?apiKey=$API_KEY")
     suspend fun searchRecipe(
         @Query("query") keyword: String
-    ): ComplexSearchDto
+    ): PagedNetworkResponse<ComplexSearchItemDto>
 
     @GET("recipes/findByIngredients?apiKey=$API_KEY")
     suspend fun searchRecipeByIngredient(

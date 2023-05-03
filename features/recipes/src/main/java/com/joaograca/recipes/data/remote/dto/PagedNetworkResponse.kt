@@ -1,8 +1,8 @@
 package com.joaograca.recipes.data.remote.dto
 
-data class ComplexSearchDto(
+data class PagedNetworkResponse<T>(
     val offset: Int,
     val number: Int,
-    val results: List<ComplexSearchItemDto>,
+    val results: List<T>,
     val totalResults: Int
 )
