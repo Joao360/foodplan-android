@@ -8,5 +8,5 @@ data class NutrientDto(
     val name: String,
     val amount: Double,
     val unit: String,
-    val percentOffDailyNeeds: Double
+    val percentOfDailyNeeds: Double
 )
