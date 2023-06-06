@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
-internal class RecipeDtoTest {
+internal class RecipeDtoSerializerTest {
 
     private val moshi: Moshi = RecipeModule.providesMoshi()
     private val adapter: JsonAdapter<RecipeDto> = moshi.adapter(RecipeDto::class.java)
