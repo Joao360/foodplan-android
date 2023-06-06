@@ -14,6 +14,7 @@ dependencies {
     "implementation"(Dependencies.loggingInterceptor)
     "implementation"(Dependencies.coilCompose)
     "implementation"(project(Modules.coreUi))
+    "implementation"(project(Modules.core))
 
     "debugImplementation"(Dependencies.composeUiTooling)
 
