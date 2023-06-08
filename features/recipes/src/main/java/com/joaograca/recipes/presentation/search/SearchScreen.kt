@@ -29,7 +29,8 @@ import com.joaograca.recipes.presentation.search.component.SearchTextField
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun SearchScreenRoute(
-    viewModel: SearchViewModel = hiltViewModel()
+    viewModel: SearchViewModel = hiltViewModel(),
+    scaffoldState: ScaffoldState
 ) {
     val state by viewModel.uiState.collectAsState()
     val errorMessage by viewModel.errorMessage.collectAsState()
@@ -42,6 +43,7 @@ fun SearchScreenRoute(
 
     SearchScreen(
         state = state,
+        scaffoldState = scaffoldState,
         onValueChange = viewModel::onQueryChange,
         onSearch = onSearch,
         errorMessage = errorMessage,
@@ -52,6 +54,7 @@ fun SearchScreenRoute(
 @Composable
 private fun SearchScreen(
     state: SearchUiState,
+    scaffoldState: ScaffoldState,
     onValueChange: (String) -> Unit,
     onSearch: () -> Unit,
     errorMessage: UiText?,
@@ -59,7 +62,6 @@ private fun SearchScreen(
 ) {
     val context = LocalContext.current
     val spacing = LocalSpacing.current
-    val scaffoldState = rememberScaffoldState()
 
     LaunchedEffect(scaffoldState.snackbarHostState, errorMessage) {
         errorMessage?.let {
@@ -68,8 +70,7 @@ private fun SearchScreen(
         }
     }
 
-    Scaffold(
-        scaffoldState = scaffoldState,
+    Column(
         modifier = Modifier
             .padding(
                 start = spacing.spaceMedium,
@@ -145,6 +146,7 @@ fun SearchScreenWithData() {
 
     SearchScreen(
         state = state,
+        scaffoldState = rememberScaffoldState(),
         onValueChange = {},
         onSearch = {},
         errorMessage = null,
@@ -162,6 +164,7 @@ fun SearchScreenEmpty() {
 
     SearchScreen(
         state = state,
+        scaffoldState = rememberScaffoldState(),
         onValueChange = {},
         onSearch = {},
         errorMessage = null,
@@ -179,6 +182,7 @@ fun SearchScreenLoading() {
 
     SearchScreen(
         state = state,
+        scaffoldState = rememberScaffoldState(),
         onValueChange = {},
         onSearch = {},
         errorMessage = null,
