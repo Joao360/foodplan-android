@@ -16,6 +16,7 @@ dependencies {
     "implementation"(project(Modules.coreUi))
     "implementation"(project(Modules.core))
 
+    "implementation"(Dependencies.composeUiToolingPreview)
     "debugImplementation"(Dependencies.composeUiTooling)
 
     "testImplementation"(Dependencies.moshiKotlin)
