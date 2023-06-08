@@ -6,7 +6,7 @@ import com.joaograca.recipes.domain.model.IngredientInfo
 
 fun IngredientDto.toIngredient(): IngredientInfo {
     return IngredientInfo(
-        ingredient = Ingredient(name),
+        ingredient = Ingredient("name"),
         quantity = amount,
         unit = unit
     )
