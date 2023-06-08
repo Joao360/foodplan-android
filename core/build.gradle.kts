@@ -1,5 +1,5 @@
-apply {
-    from("$rootDir/base-module.gradle")
+plugins {
+    id("foodplan-android-library")
 }
 
 dependencies {

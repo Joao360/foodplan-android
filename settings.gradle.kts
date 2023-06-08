@@ -1,4 +1,5 @@
 pluginManagement {
+    includeBuild("build-logic")
     repositories {
         gradlePluginPortal()
         google()
@@ -13,7 +14,7 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "FoodPlan"
-include ':app'
-include ':features:recipes'
-include ':core-ui'
-include ':core'
+include(":app")
+include(":features:recipes")
+include(":core-ui")
+include(":core")
