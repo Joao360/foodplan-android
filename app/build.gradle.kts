@@ -1,18 +1,14 @@
 plugins {
-    id("com.android.application")
-    kotlin("android")
+    id("foodplan-android-app-compose")
     id("dagger.hilt.android.plugin")
     kotlin("kapt")
     id("de.mannodermaus.android-junit5")
 }
 
 android {
-    compileSdk = ProjectConfig.compileSdk
 
     defaultConfig {
         applicationId = "com.joaograca.foodplan"
-        minSdk = ProjectConfig.minSdk
-        targetSdk = ProjectConfig.targetSdk
         versionCode = ProjectConfig.versionCode
         versionName = ProjectConfig.versionName
 
@@ -31,19 +27,7 @@ android {
             )
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
-    buildFeatures {
-        compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = Versions.compose
-    }
+
     packagingOptions {
         resources.excludes.add("/META-INF/{AL2.0,LGPL2.1}")
     }
@@ -51,15 +35,19 @@ android {
 
 dependencies {
 
+    implementation(Dependencies.androidXActivityCompose)
     implementation(Dependencies.androidxCore)
+    implementation(Dependencies.androidXLifecycleRuntimeKtx)
     implementation(Dependencies.composeUi)
     implementation(Dependencies.composeMaterial)
-    implementation(Dependencies.composeUiToolingPreview)
     implementation(Dependencies.navigation)
-    implementation(Dependencies.androidXLifecycleRuntimeKtx)
-    implementation(Dependencies.androidXActivityCompose)
     implementation(Dependencies.timber)
 
+    // Compose preview
+    implementation(Dependencies.composeUiToolingPreview)
+    debugImplementation(Dependencies.composeUiTooling)
+
+    // Dagger Hilt
     implementation(Dependencies.hilt)
     kapt(Dependencies.hiltCompiler)
 
@@ -71,8 +59,6 @@ dependencies {
     androidTestImplementation(Dependencies.testExt)
     androidTestImplementation(Dependencies.espressoCore)
     androidTestImplementation(Dependencies.composeUiTestJunit)
-
-    debugImplementation(Dependencies.composeUiTooling)
 }
 
 kapt {

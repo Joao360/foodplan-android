@@ -1,28 +1,41 @@
-apply {
-    from("$rootDir/base-module.gradle")
+plugins {
+    id("foodplan-android-library-compose")
+    id("foodplan-android-library-secrets")
+    id("dagger.hilt.android.plugin")
+    id("kotlin-kapt")
+    id("de.mannodermaus.android-junit5")
 }
 
 dependencies {
+    implementation(project(Modules.core))
+    implementation(project(Modules.coreUi))
 
-    "implementation"(Dependencies.androidxCore)
-    "implementation"(Dependencies.androidXAppCompat)
-    "implementation"(Dependencies.androidMaterial)
-    "implementation"(Dependencies.retrofit)
-    "implementation"(Dependencies.converterMoshi)
-    "implementation"(Dependencies.moshiKotlin)
-    "implementation"(Dependencies.okHttp)
-    "implementation"(Dependencies.loggingInterceptor)
-    "implementation"(Dependencies.coilCompose)
-    "implementation"(project(Modules.coreUi))
-    "implementation"(project(Modules.core))
+    implementation(Dependencies.androidxCore)
+    implementation(Dependencies.androidXAppCompat)
+    implementation(Dependencies.androidMaterial)
+    implementation(Dependencies.retrofit)
+    implementation(Dependencies.converterMoshi)
+    implementation(Dependencies.moshiKotlin)
+    implementation(Dependencies.okHttp)
+    implementation(Dependencies.loggingInterceptor)
+    implementation(Dependencies.coilCompose)
+    implementation(Dependencies.hiltNavigationCompose)
+    implementation(Dependencies.viewModelCompose)
+    implementation(Dependencies.timber)
 
-    "implementation"(Dependencies.composeUiToolingPreview)
-    "debugImplementation"(Dependencies.composeUiTooling)
+    implementation(Dependencies.hilt)
+    kapt(Dependencies.hiltCompiler)
 
-    "testImplementation"(Dependencies.moshiKotlin)
-    "testImplementation"(Dependencies.mockWebServer)
-    "testImplementation"(project(Modules.core))
+    testImplementation(project(Modules.core))
 
-    "androidTestImplementation"(Dependencies.testExt)
-    "androidTestImplementation"(Dependencies.espressoCore)
+    testImplementation(Dependencies.moshiKotlin)
+    testImplementation(Dependencies.mockWebServer)
+    testImplementation(Dependencies.kotlinCoroutinesTest)
+    testImplementation(Dependencies.mockk)
+    testImplementation(Dependencies.turbine)
+    testImplementation(Dependencies.jUnitApi)
+    testRuntimeOnly(Dependencies.jUnitEngine)
+
+    androidTestImplementation(Dependencies.testExt)
+    androidTestImplementation(Dependencies.espressoCore)
 }
