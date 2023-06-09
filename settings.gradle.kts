@@ -13,6 +13,7 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
+
 rootProject.name = "FoodPlan"
 include(":app")
 include(":features:recipes")
