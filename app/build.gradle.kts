@@ -1,5 +1,5 @@
 plugins {
-    id("foodplan-android-app")
+    id("foodplan-android-app-compose")
     id("dagger.hilt.android.plugin")
     kotlin("kapt")
     id("de.mannodermaus.android-junit5")
@@ -26,14 +26,6 @@ android {
                 "proguard-rules.pro"
             )
         }
-    }
-
-    buildFeatures {
-        compose = true
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = Versions.compose
     }
 
     packagingOptions {
