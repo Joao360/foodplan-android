@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="unknown_error">Oh não… Houve um erro inesperado</string>
+    <string name="minutes_small">mins</string>
+    <string name="difficulty_easy">Fácil</string>
+    <string name="difficulty_medium">Médio</string>
+    <string name="difficulty_hard">Difícil</string>
+    <string name="minutes">Minutos</string>
+    <string name="description">Descrição</string>
+    <string name="ingredients">Ingredientes</string>
+</resources>
