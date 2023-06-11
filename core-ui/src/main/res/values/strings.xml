@@ -8,4 +8,9 @@
     <string name="minutes">Minutes</string>
     <string name="description">Description</string>
     <string name="ingredients">Ingredients</string>
+    <string name="calories_small">cal</string>
+    <string name="no_recipes">No recipes found</string>
+    <string name="search_recipe_placeholder">Search for any recipe</string>
+    <string name="search">Search</string>
+    <string name="blank_query_error">Missing required search text</string>
 </resources>
