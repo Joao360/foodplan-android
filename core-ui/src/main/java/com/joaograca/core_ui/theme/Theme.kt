@@ -1,4 +1,4 @@
-package com.joaograca.foodplan.ui.theme
+package com.joaograca.core_ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme

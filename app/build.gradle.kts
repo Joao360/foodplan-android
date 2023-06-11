@@ -52,6 +52,7 @@ dependencies {
     kapt(Dependencies.hiltCompiler)
 
     implementation(project(Modules.recipes))
+    implementation(project(Modules.coreUi))
 
     testImplementation(Dependencies.jUnitApi)
     testRuntimeOnly(Dependencies.jUnitEngine)

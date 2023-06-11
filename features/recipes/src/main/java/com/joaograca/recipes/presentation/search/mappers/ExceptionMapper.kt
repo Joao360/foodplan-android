@@ -1,7 +1,7 @@
 package com.joaograca.recipes.presentation.search.mappers
 
+import com.joaograca.core_ui.R
 import com.joaograca.core_ui.UiText
-import com.joaograca.recipes.R
 import com.joaograca.recipes.domain.exception.BlankQueryException
 
 fun Throwable.toUiText(): UiText {

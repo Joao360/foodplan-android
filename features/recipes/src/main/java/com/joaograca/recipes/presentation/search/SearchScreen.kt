@@ -20,8 +20,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.joaograca.core_ui.LocalSpacing
+import com.joaograca.core_ui.R
 import com.joaograca.core_ui.UiText
-import com.joaograca.recipes.R
 import com.joaograca.recipes.domain.model.RecipePreview
 import com.joaograca.recipes.presentation.search.component.RecipeListItem
 import com.joaograca.recipes.presentation.search.component.SearchTextField
@@ -100,6 +100,7 @@ private fun SearchScreen(
                     )
                 }
             }
+
             RecipeListUiState.Loading -> {
                 Box(
                     modifier = Modifier.fillMaxSize(),
@@ -108,6 +109,7 @@ private fun SearchScreen(
                     CircularProgressIndicator()
                 }
             }
+
             is RecipeListUiState.Recipes -> {
                 LazyVerticalGrid(
                     columns = GridCells.Adaptive(minSize = 128.dp),
@@ -129,7 +131,7 @@ private fun SearchScreen(
 
 @Preview
 @Composable
-fun SearchScreenWithData() {
+private fun SearchScreenWithDataPreview() {
     val recipeListUiState = RecipeListUiState.Recipes(
         list = listOf(
             RecipePreview(id = 1, name = "Tomato sauce", imageUrl = ""),
@@ -156,7 +158,7 @@ fun SearchScreenWithData() {
 
 @Preview
 @Composable
-fun SearchScreenEmpty() {
+private fun SearchScreenEmptyPreview() {
     val state = SearchUiState(
         query = "Tomato",
         recipeListUiState = RecipeListUiState.Empty
@@ -174,7 +176,7 @@ fun SearchScreenEmpty() {
 
 @Preview
 @Composable
-fun SearchScreenLoading() {
+private fun SearchScreenLoadingPreview() {
     val state = SearchUiState(
         query = "Tomato",
         recipeListUiState = RecipeListUiState.Loading

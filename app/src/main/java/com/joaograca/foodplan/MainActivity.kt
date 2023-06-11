@@ -14,8 +14,8 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.joaograca.core_ui.theme.FoodPlanTheme
 import com.joaograca.foodplan.navigation.Route
-import com.joaograca.foodplan.ui.theme.FoodPlanTheme
 import com.joaograca.recipes.presentation.search.SearchScreenRoute
 import dagger.hilt.android.AndroidEntryPoint
 
