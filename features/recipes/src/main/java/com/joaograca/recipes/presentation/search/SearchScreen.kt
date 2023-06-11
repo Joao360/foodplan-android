@@ -30,7 +30,8 @@ import com.joaograca.recipes.presentation.search.component.SearchTextField
 @Composable
 fun SearchScreenRoute(
     viewModel: SearchViewModel = hiltViewModel(),
-    scaffoldState: ScaffoldState
+    scaffoldState: ScaffoldState,
+    onClickRecipe: (Int) -> Unit
 ) {
     val state by viewModel.uiState.collectAsState()
     val errorMessage by viewModel.errorMessage.collectAsState()
@@ -47,18 +48,20 @@ fun SearchScreenRoute(
         onValueChange = viewModel::onQueryChange,
         onSearch = onSearch,
         errorMessage = errorMessage,
-        onErrorMessageShown = viewModel::onErrorMessageShown
+        onErrorMessageShown = viewModel::onErrorMessageShown,
+        onClickRecipe = onClickRecipe
     )
 }
 
 @Composable
 private fun SearchScreen(
-    state: SearchUiState,
     scaffoldState: ScaffoldState,
+    state: SearchUiState,
+    errorMessage: UiText?,
     onValueChange: (String) -> Unit,
     onSearch: () -> Unit,
-    errorMessage: UiText?,
-    onErrorMessageShown: () -> Unit
+    onErrorMessageShown: () -> Unit,
+    onClickRecipe: (Int) -> Unit,
 ) {
     val context = LocalContext.current
     val spacing = LocalSpacing.current
@@ -119,7 +122,8 @@ private fun SearchScreen(
                     items(state.recipeListUiState.list) { recipe ->
                         RecipeListItem(
                             recipe = recipe,
-                            modifier = Modifier.aspectRatio(1f)
+                            modifier = Modifier.aspectRatio(1f),
+                            onClick = onClickRecipe
                         )
                     }
                 }
@@ -152,7 +156,8 @@ private fun SearchScreenWithDataPreview() {
         onValueChange = {},
         onSearch = {},
         errorMessage = null,
-        onErrorMessageShown = {}
+        onErrorMessageShown = {},
+        onClickRecipe = {}
     )
 }
 
@@ -170,7 +175,8 @@ private fun SearchScreenEmptyPreview() {
         onValueChange = {},
         onSearch = {},
         errorMessage = null,
-        onErrorMessageShown = {}
+        onErrorMessageShown = {},
+        onClickRecipe = {}
     )
 }
 
@@ -188,6 +194,7 @@ private fun SearchScreenLoadingPreview() {
         onValueChange = {},
         onSearch = {},
         errorMessage = null,
-        onErrorMessageShown = {}
+        onErrorMessageShown = {},
+        onClickRecipe = {}
     )
 }

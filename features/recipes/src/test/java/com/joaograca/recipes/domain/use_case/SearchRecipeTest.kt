@@ -68,7 +68,7 @@ internal class SearchRecipeTest {
 
         // Then
         result.getOrThrow().forEachIndexed { index, recipePreview ->
-            assertEquals(repository.recipes[index], recipePreview)
+            assertEquals(repository.recipePreviews[index], recipePreview)
         }
     }
 

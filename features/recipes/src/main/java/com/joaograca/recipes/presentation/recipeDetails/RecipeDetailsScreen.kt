@@ -28,6 +28,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
 import com.joaograca.core_ui.LocalSpacing
+import com.joaograca.core_ui.R
 import com.joaograca.core_ui.theme.FoodPlanTheme
 import com.joaograca.recipes.domain.model.IngredientInfo
 import com.joaograca.recipes.domain.model.previewRecipe
@@ -98,7 +99,7 @@ private fun RecipeDetailsContent(
 fun IngredientsList(modifier: Modifier = Modifier, ingredients: List<IngredientInfo>) {
     Column(modifier = modifier.fillMaxWidth()) {
         Text(
-            text = stringResource(id = com.joaograca.core_ui.R.string.ingredients),
+            text = stringResource(id = R.string.ingredients),
             style = MaterialTheme.typography.h6,
             color = MaterialTheme.colors.onBackground
         )
@@ -115,7 +116,7 @@ fun IngredientsList(modifier: Modifier = Modifier, ingredients: List<IngredientI
                         color = MaterialTheme.colors.onBackground
                     )
                     Text(
-                        text = "${ingredientInfo.quantity} ${ingredientInfo.unit}",
+                        text = "${ingredientInfo.quantity.toInt()} ${ingredientInfo.unit}",
                         style = MaterialTheme.typography.body2,
                         color = MaterialTheme.colors.onBackground
                     )
@@ -129,7 +130,7 @@ fun IngredientsList(modifier: Modifier = Modifier, ingredients: List<IngredientI
 fun Description(modifier: Modifier = Modifier, description: String) {
     Column(modifier = modifier) {
         Text(
-            text = stringResource(id = com.joaograca.core_ui.R.string.description),
+            text = stringResource(id = R.string.description),
             style = MaterialTheme.typography.h6,
             color = MaterialTheme.colors.onBackground
         )
