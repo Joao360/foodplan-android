@@ -73,3 +73,6 @@ All dependencies are included in the project's `build.gradle` file.
 
 Foodplan is licensed under the [Creative Commons Attribution-NonCommercial (CC BY-NC)](https://creativecommons.org/licenses/by-nc/4.0/) license. 
 This means that you are free to modify and distribute the app for non-commercial purposes, as long as you provide attribution to the original creators.
+
+## Contact
+For inquiries or to view more of my professional work, please feel free to contact me at joaograca360@gmail.com. Thank you for your interest!
