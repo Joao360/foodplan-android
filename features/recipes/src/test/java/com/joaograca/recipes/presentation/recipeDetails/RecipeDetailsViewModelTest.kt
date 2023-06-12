@@ -6,7 +6,7 @@ import com.joaograca.core_testing.withDispatcher
 import com.joaograca.recipes.CoroutinesTestExtension
 import com.joaograca.recipes.domain.RecipeRepositoryFake
 import com.joaograca.recipes.domain.model.RecipeFactory
-import com.joaograca.recipes.navigation.RecipeDetailsArgs
+import com.joaograca.recipes.navigation.recipeIdArg
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.runTest
@@ -82,7 +82,7 @@ internal class RecipeDetailsViewModelTest {
 
     // region Helper functions
     private fun createViewModel(): RecipeDetailsViewModel {
-        savedStateHandle[RecipeDetailsArgs.recipeId] = RECIPE_ID
+        savedStateHandle[recipeIdArg] = RECIPE_ID
 
         return RecipeDetailsViewModel(
             savedStateHandle = savedStateHandle,
