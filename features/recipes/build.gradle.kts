@@ -27,6 +27,7 @@ dependencies {
     kapt(Dependencies.hiltCompiler)
 
     testImplementation(project(Modules.core))
+    testImplementation(project(Modules.coreTesting))
 
     testImplementation(Dependencies.moshiKotlin)
     testImplementation(Dependencies.mockWebServer)

@@ -17,7 +17,7 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.joaograca.core_ui.LocalSpacing
-import com.joaograca.recipes.R
+import com.joaograca.core_ui.R
 
 @Composable
 fun SearchTextField(

@@ -1,34 +1,37 @@
 package com.joaograca.recipes.domain.model
 
-import com.joaograca.core.util.nextString
-import kotlin.random.Random
-
-class RecipeFactory {
-    companion object {
-        fun create(): Recipe {
-            return Recipe(
-                id = Random.nextInt(5),
-                title = Random.nextString(5),
-                summary = Random.nextString(5),
-                imageUrl = Random.nextString(5),
-                difficulty = Difficulty.values().random(),
-                nutritionInfo = NutritionInfo(
-                    calories = Kcal(Random.nextInt(5)),
-                    carbs = Grams(Random.nextInt(5)),
-                    fat = Grams(Random.nextInt(5)),
-                    protein = Grams(Random.nextInt(5))
+object RecipeFactory {
+    fun create(): Recipe {
+        return Recipe(
+            id = 123,
+            title = "Pasta with Garlic, Scallions, Cauliflower & Breadcrumbs",
+            summary = "Pasta with Garlic, Scallions, Cauliflower & Breadcrumbs might be a good recipe to expand your main course repertoire.",
+            imageUrl = null,
+            difficulty = Difficulty.MEDIUM,
+            nutritionInfo = NutritionInfo(
+                calories = Kcal(1),
+                carbs = Grams(1),
+                fat = Grams(1),
+                protein = Grams(1)
+            ),
+            readyIn = Minutes(2),
+            ingredients = listOf(
+                IngredientInfo(
+                    ingredient = Ingredient("Garlic"),
+                    quantity = 1.0,
+                    unit = "g"
                 ),
-                readyIn = Minutes(Random.nextInt(5)),
-                ingredients = listOf(
-                    IngredientInfo(
-                        Ingredient(Random.nextString(5)),
-                        Random.nextDouble(),
-                        Random.nextString(5)
-                    )
-                ),
-                servings = Random.nextInt(5),
-                steps = listOf(Random.nextString(5), Random.nextString(5))
+                IngredientInfo(
+                    ingredient = Ingredient("Salt"),
+                    quantity = 10.0,
+                    unit = "g"
+                )
+            ),
+            servings = 2,
+            steps = listOf(
+                "First step is very easy",
+                "Second step is very hard",
             )
-        }
+        )
     }
 }

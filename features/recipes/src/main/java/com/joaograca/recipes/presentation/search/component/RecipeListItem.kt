@@ -1,6 +1,7 @@
 package com.joaograca.recipes.presentation.search.component
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -22,8 +23,9 @@ import com.joaograca.recipes.domain.model.RecipePreview
 
 @Composable
 fun RecipeListItem(
+    modifier: Modifier,
     recipe: RecipePreview,
-    modifier: Modifier
+    onClick: (Int) -> Unit
 ) {
     val spacing = LocalSpacing.current
 
@@ -36,7 +38,8 @@ fun RecipeListItem(
                 shape = MaterialTheme.shapes.medium
             )
             .background(MaterialTheme.colors.surface)
-            .padding(spacing.spaceMedium),
+            .padding(spacing.spaceMedium)
+            .clickable { onClick(recipe.id) },
         verticalArrangement = Arrangement.SpaceBetween,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -70,6 +73,7 @@ fun DefaultPreview() {
             "Lorem ipsum dolor sit amet",
             imageUrl = ""
         ),
-        modifier = Modifier.aspectRatio(1f)
+        modifier = Modifier.aspectRatio(1f),
+        onClick = {}
     )
 }

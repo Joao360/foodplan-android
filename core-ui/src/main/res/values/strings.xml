@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="unknown_error">Uh-oh… An unknown error appeared</string>
+    <string name="minutes_small">mins</string>
+    <string name="difficulty_easy">Easy</string>
+    <string name="difficulty_medium">Medium</string>
+    <string name="difficulty_hard">Hard</string>
+    <string name="minutes">Minutes</string>
+    <string name="description">Description</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="calories_small">cal</string>
+    <string name="no_recipes">No recipes found</string>
+    <string name="search_recipe_placeholder">Search for any recipe</string>
+    <string name="search">Search</string>
+    <string name="blank_query_error">Missing required search text</string>
 </resources>
