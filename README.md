@@ -3,6 +3,11 @@
 Foodplan is a versatile Android app that helps you with all aspects of meal planning and recipe management. 
 Whether you want to search for new food recipes, create your own recipes, plan meals for the week, or save your favorite recipes, Foodplan has got you covered.
 
+### Status: 🚧 In progress 🚧
+
+Foodplan is still in the early stages of development, and as such only the search screen has been created so far. However,
+most of the app's architecture has been implemented, as well as the data layer.
+
 ## Features
 
 ### 1. Search Food Recipes
