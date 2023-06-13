@@ -13,4 +13,6 @@
     <string name="search_recipe_placeholder">Pesquise por qualquer receita</string>
     <string name="search">Pesquisar</string>
     <string name="blank_query_error">Texto de pesquisa obrigatório em falta</string>
+    <string name="read_more">Ler mais</string>
+    <string name="read_less">Ler menos</string>
 </resources>

@@ -1,14 +1,20 @@
 package com.joaograca.recipes.data.mappers
 
+import com.joaograca.core.util.extensions.removeHtmlTags
 import com.joaograca.recipes.data.remote.dto.IngredientDto
 import com.joaograca.recipes.data.remote.dto.RecipeDto
-import com.joaograca.recipes.domain.model.*
+import com.joaograca.recipes.domain.model.Difficulty
+import com.joaograca.recipes.domain.model.Grams
+import com.joaograca.recipes.domain.model.Kcal
+import com.joaograca.recipes.domain.model.Minutes
+import com.joaograca.recipes.domain.model.NutritionInfo
+import com.joaograca.recipes.domain.model.Recipe
 
 fun RecipeDto.toRecipe(): Recipe {
     return Recipe(
         id = id,
         title = title,
-        summary = summary,
+        summary = summary.removeHtmlTags(),
         imageUrl = image,
         difficulty = Difficulty.MEDIUM, // TODO
         nutritionInfo = NutritionInfo( // TODO
