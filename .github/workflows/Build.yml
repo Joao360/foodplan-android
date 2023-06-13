@@ -39,3 +39,41 @@ jobs:
 
       - name: Run local tests
         run: ./gradlew testDebug
+
+  androidTest:
+    needs: build
+    runs-on: macOS-latest # enables hardware acceleration in the virtual machine
+    timeout-minutes: 55
+    strategy:
+      matrix:
+        api-level: [ 26, 31 ]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+
+      - name: Create local.properties file
+        run: |
+          echo "API_KEY=${{ secrets.SPOONACULAR_API_KEY }}" > local.properties
+
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
+
+      - name: Build AndroidTest apps
+        run: ./gradlew packageDebug packageDebugAndroidTest --daemon
+
+      - name: Run instrumentation tests
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: ${{ matrix.api-level }}
+          arch: x86_64
+          disable-animations: true
+          disk-size: 6000M
+          heap-size: 600M
+          script: ./gradlew connectedDebugAndroidTest --daemon
