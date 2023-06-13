@@ -24,6 +24,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
+import com.joaograca.core_ui.ExpandableText
 import com.joaograca.core_ui.LocalSpacing
 import com.joaograca.core_ui.R
 import com.joaograca.core_ui.theme.FoodPlanTheme
@@ -100,7 +101,7 @@ fun Description(modifier: Modifier = Modifier, description: String) {
 
         Spacer(modifier = Modifier.height(LocalSpacing.current.spaceMedium))
 
-        Text(
+        ExpandableText(
             text = description,
             style = MaterialTheme.typography.body2,
             color = MaterialTheme.colors.onBackground
